@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local configuration file (such as Flask .env files)
+.env
+
+# IDE/Editor files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+*.pycharm
+
+# Dependency directories
+venv/
+env/
+__env__/
+env.bak/
+*.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Logs and databases
+*.log
+*.db
+
+# Compiled Python files
+*.pyc
+
+# Environment variables file
+.env.local
+
+# Package and distribution files
+*.egg-info/
+dist/
+build/
+
+# Mac OS files
+.DS_Store
+
+# Ignore database migrations if using Flask-Migrate or Alembic
+/migrations/

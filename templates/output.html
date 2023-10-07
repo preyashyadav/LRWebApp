@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Regression Results</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+      }
+
+      h2 {
+        color: #007bff;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 15px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .plot-img {
+        display: block;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        height: auto;
+      }
+
+      p {
+        text-align: center;
+        margin-top: 20px;
+        color: #555;
+      }
+
+      .back-button {
+        display: block;
+        margin-top: -20px;
+        margin-right: -20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        float: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <a class="back-button" href="/">Back</a>
+      <!-- Display original data -->
+      <h2>Original Data</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Placement</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for index, row in datafile.iterrows() %}
+          <tr>
+            <td>{{ row['Year'] }}</td>
+            <td>{{ row['Placement'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <h1>Regression Results</h1>
+
+      <h2>Coefficient: {{ coefficient }}</h2>
+      <h2>Intercept: {{ intercept }}</h2>
+
+      <h2>Predicted Placement:</h2>
+      <table>
+        <tr>
+          <th>Year</th>
+          <th>Predicted Placement</th>
+        </tr>
+        {% for year, value in predicted_placement %}
+        <tr>
+          <td>{{ year }}</td>
+          <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <h2>Evaluation Metrics:</h2>
+      <p>Mean Absolute Error (MAE): {{ mae }}</p>
+      <p>Mean Squared Error (MSE): {{ mse }}</p>
+      <p>Root Mean Squared Error (RMSE): {{ rmse }}</p>
+      <p>R-squared (R2) Score: {{ r2 }}</p>
+
+      <h2>Plots:</h2>
+      <img
+        class="plot-img"
+        src="data:image/png;base64,{{ plot }}"
+        alt="Plots"
+      />
+    </div>
+  </body>
+</html>

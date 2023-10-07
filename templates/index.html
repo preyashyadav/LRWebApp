@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Linear Regression App</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 30px;
+        color: #333;
+      }
+
+      .btn-container {
+        margin-bottom: 20px;
+      }
+
+      input[type="submit"],
+      input[type="file"] {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 15px 30px;
+        cursor: pointer;
+        font-size: 18px;
+        margin-right: 20px;
+        display: inline-block;
+      }
+      input[type="submit"],
+      input[type="file"] {
+        width: 250px;
+      }
+      input[type="file"] {
+        padding: 10px;
+        margin-right: 0;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      @media (max-width: 768px) {
+        input[type="submit"],
+        input[type="file"] {
+          margin-bottom: 10px;
+          margin-right: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Linear Regression App</h1>
+      <div class="btn-container">
+        <form method="post" action="/output">
+          <label for="file">See Result on Dummy Data: </label>
+          <input type="submit" value="Go" name="sample-data" />
+        </form>
+        <br />
+        <br />
+        <form
+          id="upload-form"
+          method="post"
+          action="/output"
+          enctype="multipart/form-data"
+        >
+          <label for="file">Upload your CSV File: </label>
+          <input type="file" name="file" onchange="handleFileSelect()" />
+        </form>
+      </div>
+    </div>
+    <script>
+      function handleFileSelect() {
+        document.getElementById("upload-form").submit();
+      }
+    </script>
+  </body>
+</html>
